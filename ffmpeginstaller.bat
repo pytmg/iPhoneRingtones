@@ -24,6 +24,10 @@ move "%source%\ffmpeg\bin\*" "%dest%\"
 
 rmdir %source% /s /q 2>nul
 
-powershell -NoProfile -Command "$p='%dest%'; if ($env:Path -notlike '*'+$p+'*') {[Environment]::SetEnvironmentVariable('Path', $env:Path+';'+$p,'User')}"
+powershell -NoProfile -Command ^
+"$p='%dest%'; ^
+if ($env:Path.Split(';') -notcontains $p) { ^
+  [Environment]::SetEnvironmentVariable('Path', ($env:Path + ';' + $p), 'User') ^
+}"
 
 echo FFMPEG installed successfully, restart Terminal to see changes.
