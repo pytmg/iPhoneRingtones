@@ -16,6 +16,7 @@ if exist "%dest%" (
 )
 
 mkdir %source%
+mkdir %dest%
 
 curl -L "https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-essentials.7z" -o "%source%\ffmpeg.7z"
 "C:\Program Files\7-Zip\7z.exe" x "%source%\ffmpeg.7z" -o"%source%" -y
