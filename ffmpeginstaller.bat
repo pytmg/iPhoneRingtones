@@ -20,7 +20,9 @@ mkdir %dest%
 
 curl -L "https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-essentials.7z" -o "%source%\ffmpeg.7z"
 "C:\Program Files\7-Zip\7z.exe" x "%source%\ffmpeg.7z" -o"%source%" -y
-move "%source%\ffmpeg\bin\*" "%dest%\"
+
+for /d %%i in ("%source%\*") do set "ffmpegfolder=%%i"
+move "%ffmpegfolder%\bin\*" "%dest%\"
 
 rmdir %source% /s /q 2>nul
 
